@@ -1,21 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
 import { Container, Typography, Button, Box, Grid, Paper, AppBar, Toolbar, IconButton, Menu, MenuItem, TextField } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import SearchIcon from '@mui/icons-material/Search';
 
 const LandingPage = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
   const navigate = useNavigate(); // Initialize navigate
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
 
   const handleGetStartedClick = () => {
     navigate('/quiz'); // Redirect to the quiz page
@@ -23,59 +12,6 @@ const LandingPage = () => {
 
   return (
     <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
-      {/* Navbar */}
-      <AppBar position="static" sx={{ backgroundColor: '#355C78' }}>
-        <Toolbar>
-          <Typography variant="h2" component="h6" gutterBottom sx={{ fontFamily: 'Poppins', color: 'white', fontSize: '20px', cursor: 'pointer' }}>
-            CalmDorm.org
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end', alignItems: 'center' }}>
-            <TextField
-              placeholder="Search..."
-              size="small"
-              sx={{ backgroundColor: 'white', width: '300px', borderRadius: '100px' }}
-              InputProps={{
-                endAdornment: (
-                  <IconButton type="submit" sx={{ p: '10px' }}>
-                    <SearchIcon />
-                  </IconButton>
-                ),
-              }}
-            />
-          </Box>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2, display: { xs: 'block', md: 'none' } }}
-            onClick={handleOpenNavMenu}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Menu
-            id="menu-appbar"
-            anchorEl={anchorElNav}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-            open={Boolean(anchorElNav)}
-            onClose={handleCloseNavMenu}
-          >
-            <MenuItem onClick={handleCloseNavMenu}>Home</MenuItem>
-            <MenuItem onClick={handleCloseNavMenu}>About</MenuItem>
-            <MenuItem onClick={handleCloseNavMenu}>Features</MenuItem>
-            <MenuItem onClick={handleCloseNavMenu}>Contact</MenuItem>
-          </Menu>
-        </Toolbar>
-      </AppBar>
-
       {/* Main Content */}
       <Container
         maxWidth="lg"

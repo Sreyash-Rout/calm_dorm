@@ -71,34 +71,36 @@ const MainQuiz = () => {
   };
 
   return (
-    <div className="quiz-container">
-      <h1>{quizData[currentQuestion].question}</h1>
-      <span>{`Question ${currentQuestion + 1} out of ${quizData.length}`}</span>
-      {options.map((option) => (
-        <p
-          key={option}
-          className={`ui floating message options ${
-            selectedOption === option ? "selected" : ""
-          }`}
-          onClick={() => setSelectedOption(option)}
-        >
-          {option}
-        </p>
-      ))}
-      {currentQuestion < quizData.length - 1 && (
-        <button
-          className="ui inverted button"
-          disabled={!selectedOption} // Enable button if an option is selected
-          onClick={nextQuestionHandler}
-        >
-          Next
-        </button>
-      )}
-      {currentQuestion === quizData.length - 1 && (
-        <button className="ui inverted button" onClick={finishHandler}>
-          Finish
-        </button>
-      )}
+    <div className="App">
+      <div className="quiz-container">
+        <h1>{quizData[currentQuestion].question}</h1>
+        <span>{`Question ${currentQuestion + 1} out of ${quizData.length}`}</span>
+        {options.map((option) => (
+          <p
+            key={option}
+            className={`ui floating message options ${
+              selectedOption === option ? "selected" : ""
+            }`}
+            onClick={() => setSelectedOption(option)}
+          >
+            {option}
+          </p>
+        ))}
+        {currentQuestion < quizData.length - 1 && (
+          <button
+            className="ui inverted button"
+            disabled={!selectedOption} // Enable button if an option is selected
+            onClick={nextQuestionHandler}
+          >
+            Next
+          </button>
+        )}
+        {currentQuestion === quizData.length - 1 && (
+          <button className="ui inverted button" onClick={finishHandler}>
+            Finish
+          </button>
+        )}
+      </div>
     </div>
   );
 };
