@@ -1,0 +1,124 @@
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+  }
+  
+  .time-header {
+    display: flex;
+    align-items: center; /* Center align the time slots */
+  }
+  
+  .empty-header {
+    width: 150px; /* Width for the empty header section */
+  }
+  
+  .time-slots {
+    display: flex;
+    flex-grow: 1;
+  }
+  
+  .time-slot-header {
+    flex: 1; /* Make each header take equal space */
+    text-align: center;
+    padding: 8px;
+    background-color: #34495e;
+    color: #ffffff;
+    box-sizing: border-box;
+    border-right: 1px solid #2c3e50; /* Border to separate time slots */
+  }
+  
+  .tasks-header {
+    width: 150px;
+    padding-left: 16px;
+    text-align: center;
+  }
+  
+  .calendar-body {
+    display: flex;
+  }
+  
+  .days-column {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .day-header {
+    height: 50px; /* Fixed height to match time slots */
+    text-align: center;
+    padding: 8px;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #34495e;
+    box-sizing: border-box;
+    border-bottom: 1px solid #2c3e50; /* Border to separate day headers */
+  }
+  
+  .calendar-grid {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+  }
+  
+  .day-row {
+    display: flex;
+    flex: 1;
+  }
+  
+  .time-slot {
+    flex: 1; /* Ensure all slots take equal width */
+    height: 50px; /* Fixed height to match day headers */
+    padding: 4px;
+    background-color: #2c3e50;
+    box-sizing: border-box;
+    overflow: hidden; /* Prevent tasks from overflowing */
+    position: relative; /* Ensure tasks are positioned correctly */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #34495e; /* Border for slot boundaries */
+    border-right: 0; /* Remove right border for last slot */
+  }
+  
+  .time-slot:last-child {
+    border-right: 1px solid #34495e; /* Border for the last slot */
+  }
+  
+  .time-slot.over {
+    background-color: #34495e;
+  }
+  
+  .tasks-column {
+    width: 150px;
+    padding-left: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .task {
+    width: 100%; /* Ensure the task takes the full width of the container */
+    min-width: 120px; /* Ensure a minimum width to accommodate task names */
+    max-width: 150px; /* Ensure task does not exceed the column width */
+    padding: 8px;
+    margin: 4px 0;
+    cursor: move;
+    text-align: center;
+    box-sizing: border-box;
+    white-space: normal; /* Allow text to wrap */
+    overflow: hidden; /* Hide overflowed text */
+    text-overflow: ellipsis; /* Add ellipsis for overflowed text */
+  }
+  
+  .task.in-slot {
+    width: 100%; /* Ensure the task width matches its container */
+    max-width: 100%; /* Ensure it does not exceed the container width */
+    height: auto; /* Adjust height based on content */
+    white-space: nowrap; /* Prevent text wrapping in the slot */
+    overflow: hidden; /* Hide any overflowed text */
+    text-overflow: ellipsis; /* Show ellipsis for overflowed text */
+  }
+  

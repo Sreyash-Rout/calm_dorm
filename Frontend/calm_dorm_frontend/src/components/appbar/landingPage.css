@@ -1,0 +1,55 @@
+/* src/components/LandingPage.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8;
+    color: #333;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  header {
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 3rem;
+    color: #4a90e2;
+    margin-bottom: 0.5rem;
+  }
+  
+  p {
+    font-size: 1.2rem;
+    color: #666;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #4a90e2;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #357abd;
+  }
+  
+  footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 1rem;
+    background-color: #4a90e2;
+    color: #fff;
+  }
+  
