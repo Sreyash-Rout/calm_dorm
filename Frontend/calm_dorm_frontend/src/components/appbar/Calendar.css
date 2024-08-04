@@ -1,4 +1,5 @@
 .calendar-container {
+  width: 1200px;
   display: flex;
   flex-direction: column;
   padding: 16px;
@@ -10,7 +11,6 @@
   left: 50%; /* Position in the middle of the viewport */
   transform: translate(-50%, -50%); /* Adjust the position to be exactly in the center */
 }
-
 
 .time-header {
   display: flex;
@@ -53,7 +53,7 @@
 }
 
 .day-header {
-  height: 50px; /* Fixed height to match time slots */
+  height: 60px; /* Adjusted height to match time slots */
   text-align: center;
   padding: 8px;
   color: #ffffff;
@@ -64,6 +64,7 @@
 }
 
 .calendar-grid {
+  font-size: 12px;
   display: flex;
   flex-grow: 1;
   flex-direction: column;
@@ -75,13 +76,13 @@
 }
 
 .time-slot {
-  flex: 1; /* Ensure all slots take equal width */
-  height: 50px; /* Fixed height to match day headers */
+  flex: 1;
+  height: 60px; /* Adjusted height to match day headers */
   padding: 4px;
   background-color: #2c3e50;
   box-sizing: border-box;
-  overflow: hidden; /* Prevent tasks from overflowing */
-  position: relative; /* Ensure tasks are positioned correctly */
+  overflow: hidden; 
+  position: relative; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -106,24 +107,24 @@
 }
 
 .task {
-  width: 100%; /* Ensure the task takes the full width of the container */
-  min-width: 120px; /* Ensure a minimum width to accommodate task names */
-  max-width: 150px; /* Ensure task does not exceed the column width */
-  padding: 8px;
+  width: 100%; 
+  min-width: 120px;
+  max-width: 150px;
+  height: 62px; /* Adjusted height to match slot height */
+  font-family: 'Poppins';
+  padding: 2px;
   margin: 4px 0;
   cursor: move;
   text-align: center;
   box-sizing: border-box;
-  white-space: normal; /* Allow text to wrap */
   overflow: hidden; /* Hide overflowed text */
   text-overflow: ellipsis; /* Add ellipsis for overflowed text */
 }
-
 .task.in-slot {
-  width: 100%; /* Ensure the task width matches its container */
+  width: 100%;
   max-width: 100%; /* Ensure it does not exceed the container width */
-  height: auto; /* Adjust height based on content */
-  white-space: nowrap; /* Prevent text wrapping in the slot */
+  height: 100%; /* Ensure it takes the full height of the slot */
   overflow: hidden; /* Hide any overflowed text */
+  white-space: nowrap;
   text-overflow: ellipsis; /* Show ellipsis for overflowed text */
 }

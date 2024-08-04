@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AppBar, Toolbar, Typography, Box, IconButton, Menu, MenuItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -16,12 +17,34 @@ const Navbar = () => {
   return (
     <div>
       {/* Navbar */}
-      <AppBar position="static" sx={{ backgroundColor: '#355C78' }}>
+      <AppBar position="static" sx={{ backgroundColor: 'black' }}>
         <Toolbar>
-          <Typography variant="h2" component="h6" gutterBottom sx={{ fontFamily: 'Poppins', color: 'white', fontSize: '20px', cursor: 'pointer' }}>
+          <Typography
+            variant="h2"
+            component={Link}
+            to="/"
+            gutterBottom
+            sx={{
+              fontFamily: 'Poppins',
+              color: 'yellow',
+              fontSize: '20px',
+              cursor: 'pointer',
+              textDecoration: 'none',
+              '&:hover': {
+                color: 'white',
+              }
+            }}
+          >
             CalmDorm.org
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end', alignItems: 'center' }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: 'none', md: 'flex' },
+              justifyContent: 'flex-end',
+              alignItems: 'center'
+            }}
+          >
             {/* Removed the search TextField and IconButton */}
           </Box>
           <IconButton

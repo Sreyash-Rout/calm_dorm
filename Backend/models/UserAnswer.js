@@ -14,4 +14,3 @@ const userAnswerSchema = new mongoose.Schema({
 const UserAnswer = mongoose.model('UserAnswer', userAnswerSchema);
 
 module.exports = UserAnswer;
-

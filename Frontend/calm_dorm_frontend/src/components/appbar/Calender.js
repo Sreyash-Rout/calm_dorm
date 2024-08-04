@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { Box, Typography, Paper } from '@mui/material';
@@ -8,7 +8,7 @@ const ItemTypes = {
   TASK: 'task',
 };
 
-let taskIdCounter = 1; // To keep track of unique task IDs
+let taskIdCounter = 1;
 
 const initialTasks = [
   { id: taskIdCounter++, name: 'Multiplayer Gaming', color: '#ff8c94' },
@@ -25,7 +25,7 @@ const timeSlots = ['9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00',
 const Task = ({ task }) => {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: ItemTypes.TASK,
-    item: { id: task.id, name: task.name, color: task.color }, // Pass the full task details
+    item: { id: task.id, name: task.name, color: task.color },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
@@ -80,21 +80,73 @@ const Calendar = () => {
     }, {})
   );
 
+  useEffect(() => {
+    const fetchPreferences = async () => {
+      try {
+        const response = await fetch('/api/preferences');
+        const data = await response.json();
+
+        const preferences = data.preferences;
+        const newAssignments = { ...taskAssignments };
+
+        if (preferences.novelDiscussion) {
+          assignTaskToDays(newAssignments, 'Novel/Stories Discussion', 3); 
+        }
+        if (preferences.multiplayerGaming) {
+          assignTaskToDays(newAssignments, 'Multiplayer Gaming', 3); 
+        }
+        if (preferences.groupTherapy) {
+          assignTaskToDays(newAssignments, 'Group Therapy', 3); 
+        }
+        if (preferences.oneOnOneCoaching) {
+          assignTaskToDays(newAssignments, 'One-on-One Coaching', 3); 
+        }
+        if (preferences.journalWriting) {
+          assignTaskToDays(newAssignments, 'Journal Writing Session', 3); 
+        }
+        if (preferences.dayByYourself) {
+          assignTaskToDays(newAssignments, 'A Day By Yourself', 3);
+        }
+
+        setTaskAssignments(newAssignments);
+      } catch (error) {
+        console.error('Error fetching preferences:', error);
+      }
+    };
+
+    fetchPreferences();
+  }, []);
+
+  const assignTaskToDays = (assignments, taskName, daysCount) => {
+    const task = tasks.find(t => t.name === taskName);
+    const availableSlots = daysOfWeek.flatMap(day => 
+      timeSlots.map(time => ({ day, time }))
+    );
+
+    for (let i = 0; i < daysCount; i++) {
+      let slot;
+      do {
+        slot = availableSlots.splice(Math.floor(Math.random() * availableSlots.length), 1)[0];
+      } while (assignments[slot.day][slot.time].length > 0);
+
+      assignments[slot.day][slot.time].push({ ...task, id: taskIdCounter++ });
+    }
+  };
+
   const moveTask = (task, day, time) => {
-    // Generate a new ID for the duplicated task
     const newTask = { ...task, id: taskIdCounter++ };
 
     setTaskAssignments((prevAssignments) => {
       const newAssignments = { ...prevAssignments };
 
-      // Remove the task from its previous slot
+      // Remove task from all slots
       Object.keys(newAssignments).forEach((d) => {
         Object.keys(newAssignments[d]).forEach((t) => {
           newAssignments[d][t] = newAssignments[d][t].filter((t) => t.id !== task.id);
         });
       });
 
-      // Add the new task to the new slot
+      // Ensure only one task per slot
       if (!newAssignments[day]) {
         newAssignments[day] = {};
       }
@@ -102,7 +154,8 @@ const Calendar = () => {
         newAssignments[day][time] = [];
       }
 
-      newAssignments[day][time].push(newTask);
+      // Clear the slot and add the new task
+      newAssignments[day][time] = [newTask];
       return newAssignments;
     });
   };
