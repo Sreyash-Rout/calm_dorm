@@ -6,19 +6,30 @@ import MainQuiz from './components/appbar/MainQuiz';
 import Calendar from './components/appbar/Calender';
 import Footer from './components/appbar/footer';
 import MultiplayerGaming from './components/appbar/gaming'; // Import the new component
+import Auth from './components/appbar/Auth';
+import { AuthProvider } from './context/AuthContext';
+import './App.css';
 
 const App = () => {
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/quiz" element={<MainQuiz />} />
-        <Route path="/calendar" element={<Calendar />} />
-        <Route path="/multiplayer-gaming" element={<MultiplayerGaming />} />
-      </Routes>
-      {/* <Footer /> */}
-    </Router>
+    <AuthProvider>
+      <Router>
+        <div className="app-container">
+          <Navbar />
+          <div className="main-content">
+            <Routes>
+              <Route path="/" element={<Auth />} />
+              <Route path="/landing" element={<LandingPage />} />
+              <Route path="/quiz" element={<MainQuiz />} />
+              <Route path="/calendar" element={<Calendar />} />
+              <Route path="/multiplayer-gaming" element={<MultiplayerGaming />} />
+            </Routes>
+          </div>
+          <Footer />
+        </div>
+      </Router>
+    </AuthProvider>
+
   );
 };
 

@@ -1,0 +1,48 @@
+/* src/components/appbar/Auth.css */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f2f5;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  input {
+    margin: 10px 0;
+    padding: 10px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  p {
+    cursor: pointer;
+    color: #007bff;
+    margin-top: 10px;
+  }
+  
+  .error {
+    color: red;
+    margin-bottom: 10px;
+  }
+  
