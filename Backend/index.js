@@ -1,6 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const User = require('./models/User');
 const UserAnswer = require('./models/UserAnswer');
+
+const app = express();
+app.use(express.json());
 
 mongoose.connect('mongodb://localhost:27017/calm-dorm', {
   useNewUrlParser: true,
@@ -13,8 +19,49 @@ db.once('open', () => {
   console.log('Database connected');
 });
 
-const app = express();
-app.use(express.json());
+const secretKey = 'your_jwt_secret';
+
+app.post('/api/signup', async (req, res) => {
+  const { username, password } = req.body;
+  try {
+    const existingUser = await User.findOne({ username });
+    if (existingUser) {
+      return res.status(400).json({ message: 'User already exists' });
+    }
+
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const user = new User({ username, password: hashedPassword });
+    await user.save();
+
+    const token = jwt.sign({ userId: user._id }, secretKey, { expiresIn: '1h' });
+    res.json({ token });
+  } catch (error) {
+    res.status(500).json({ message: 'Error signing up', error });
+  }
+});
+
+app.post('/api/login', async (req, res) => {
+  const { username, password } = req.body;
+  try {
+    const user = await User.findOne({ username });
+    if (!user) {
+      return res.status(400).json({ message: 'Invalid credentials' });
+    }
+
+    // Compare the hashed password
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ message: 'Invalid credentials' });
+    }
+
+    const token = jwt.sign({ userId: user._id }, secretKey, { expiresIn: '1h' });
+    res.json({ token });
+  } catch (error) {
+    res.status(500).json({ message: 'Error logging in', error });
+  }
+});
 
 app.post('/api/submit-quiz', async (req, res) => {
   try {
