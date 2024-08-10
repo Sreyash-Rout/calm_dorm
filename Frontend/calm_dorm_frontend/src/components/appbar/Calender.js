@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { Box, Typography, Paper } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import './Calendar.css';
 
 const ItemTypes = {
@@ -22,7 +23,7 @@ const initialTasks = [
 const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const timeSlots = ['9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'];
 
-const Task = ({ task }) => {
+const Task = ({ task, handleClick }) => {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: ItemTypes.TASK,
     item: { id: task.id, name: task.name, color: task.color },
@@ -39,6 +40,7 @@ const Task = ({ task }) => {
         opacity: isDragging ? 0.5 : 1,
         backgroundColor: task.color,
       }}
+      onClick={handleClick}
     >
       {task.name}
     </Paper>
@@ -46,6 +48,14 @@ const Task = ({ task }) => {
 };
 
 const TimeSlot = ({ day, time, tasks = [], moveTask }) => {
+  const navigate = useNavigate();
+
+  const handleTaskClick = (task) => {
+    if (task.name === 'Multiplayer Gaming') {
+      navigate('/multiplayer-gaming');
+    }
+  };
+
   const [{ isOver }, drop] = useDrop(() => ({
     accept: ItemTypes.TASK,
     drop: (item) => moveTask(item, day, time),
@@ -60,9 +70,7 @@ const TimeSlot = ({ day, time, tasks = [], moveTask }) => {
       className={`time-slot ${isOver ? 'over' : ''}`}
     >
       {tasks.map((task) => (
-        <Paper key={task.id} className="task" style={{ backgroundColor: task.color }}>
-          {task.name}
-        </Paper>
+        <Task key={task.id} task={task} handleClick={() => handleTaskClick(task)} />
       ))}
     </Box>
   );

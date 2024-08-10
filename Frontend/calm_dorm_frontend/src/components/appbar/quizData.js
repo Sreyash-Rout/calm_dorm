@@ -30,9 +30,10 @@ export const quizData = [
         options: ["Yes", "No"],
     },
     {
-      id: 6,
-      question: "Are you sure you want to submit?",
-      options: ["Yes", "No"],
+        
+            id: 6,
+            question: "Do you wish to submit your responses?",
+            options: ["Yes, submit", "No, return to the first question"],
     },
   ];
   

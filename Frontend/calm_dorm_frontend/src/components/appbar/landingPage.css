@@ -1,4 +1,4 @@
-/* src/components/LandingPage.css */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -43,13 +43,5 @@ body {
   
   button:hover {
     background-color: #357abd;
-  }
-  
-  footer {
-    margin-top: auto;
-    text-align: center;
-    padding: 1rem;
-    background-color: #4a90e2;
-    color: #fff;
   }
   
