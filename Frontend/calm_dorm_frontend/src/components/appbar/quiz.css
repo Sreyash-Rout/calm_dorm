@@ -1,4 +1,3 @@
-/* Ensure the .App class has the background image and animation */
 .App {
   display: flex;
   justify-content: center;
@@ -6,15 +5,14 @@
   height: 100vh;
   margin: 0;
   font-family: "Poppins", sans-serif;
-  background: url('https://wallpapercave.com/wp/wp7788013.png') no-repeat center center fixed; 
+  background: radial-gradient(circle at center, rgba(113, 135, 215, 0.648), rgba(120, 102, 255, 0), rgba(160, 164, 241, 0.758));
   background-size: cover;
-  animation: moveBackground 30s linear infinite; /* Adjust duration and speed as needed */
+  animation: moveBackground 30s linear infinite;
   text-align: center;
   padding: 20px;
-  overflow: hidden; /* Ensure no scrollbars appear */
+  overflow: hidden;
 }
 
-/* Other styles for the quiz container */
 .quiz-container {
   max-width: 500px;
   width: 100%;
@@ -25,11 +23,6 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.quiz-container:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  transform: translateY(-5px);
 }
 
 h1 {

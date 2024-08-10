@@ -97,21 +97,66 @@ const LandingPage = () => {
       <Container sx={{ py: 8, px: 2 }}>
         <Grid container spacing={4}>
           <Grid item xs={12} md={4}>
-            <Paper sx={{ p: 3, textAlign: 'center', backgroundColor: '#FFFFFF', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)', borderRadius: '15px' }}>
-              <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 2, fontFamily: 'Poppins' }}>Feature 1</Typography>
-              <Typography sx={{ fontFamily: 'Poppins' }}>Discover how our first feature enhances your experience.</Typography>
+            <Paper 
+              sx={{ 
+                p: 3, 
+                textAlign: 'center', 
+                backgroundColor: '#FFFFFF', 
+                boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)', 
+                borderRadius: '15px',
+                transition: 'box-shadow 0.3s ease, border 0.3s ease',
+                border: '2px solid transparent',
+                ':hover': {
+                  cursor:'pointer',
+                  boxShadow: '0px 0px 15px rgba(0, 150, 255, 0.7)', // Glowing effect
+                  border: '2px solid rgba(0, 150, 255, 0.7)', // Glowing border color
+                },
+              }}
+            >
+              <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 2, fontFamily: 'Poppins' }}>Personalized Experience</Typography>
+              <Typography sx={{ fontFamily: 'Poppins' }}>Discover a range of features designed to cater to your unique preferences and needs, making your journey with us truly one-of-a-kind.</Typography>
             </Paper>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Paper sx={{ p: 3, textAlign: 'center', backgroundColor: '#FFFFFF', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)', borderRadius: '15px' }}>
-              <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 2, fontFamily: 'Poppins' }}>Feature 2</Typography>
-              <Typography sx={{ fontFamily: 'Poppins' }}>Explore the second feature that sets us apart.</Typography>
+            <Paper 
+              sx={{ 
+                p: 3, 
+                textAlign: 'center', 
+                backgroundColor: '#FFFFFF', 
+                boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)', 
+                borderRadius: '15px',
+                transition: 'box-shadow 0.3s ease, border 0.3s ease',
+                border: '2px solid transparent',
+                ':hover': {
+                  cursor:'pointer',
+                  boxShadow: '0px 0px 15px rgba(0, 150, 255, 0.7)', // Glowing effect
+                  border: '2px solid rgba(0, 150, 255, 0.7)', // Glowing border color
+                },
+              }}
+            >
+              <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 2, fontFamily: 'Poppins' }}>Engaging Activities</Typography>
+              <Typography sx={{ fontFamily: 'Poppins' }}>Immerse yourself in interactive activities that not only entertain but also refresh your mind and soothe your spirit.</Typography>
             </Paper>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Paper sx={{ p: 3, textAlign: 'center', backgroundColor: '#FFFFFF', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)', borderRadius: '15px' }}>
-              <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 2, fontFamily: 'Poppins' }}>Feature 3</Typography>
-              <Typography sx={{ fontFamily: 'Poppins' }}>Learn about our third feature designed for your enjoyment.</Typography>
+            <Paper 
+              sx={{ 
+                p: 3, 
+                textAlign: 'center', 
+                backgroundColor: '#FFFFFF', 
+                boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)', 
+                borderRadius: '15px',
+                transition: 'box-shadow 0.3s ease, border 0.3s ease',
+                border: '2px solid transparent',
+                ':hover': {
+                  cursor:'pointer',
+                  boxShadow: '0px 0px 15px rgba(0, 150, 255, 0.7)',
+                  border: '2px solid rgba(0, 150, 255, 0.7)',
+                },
+              }}
+            >
+              <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 2, fontFamily: 'Poppins' }}>Secure and Personalized</Typography>
+              <Typography sx={{ fontFamily: 'Poppins' }}>Experience a secure and personalized environment that adapts to your preferences and ensures a comfortable experience.</Typography>
             </Paper>
           </Grid>
         </Grid>

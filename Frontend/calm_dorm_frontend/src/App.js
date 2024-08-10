@@ -5,6 +5,8 @@ import LandingPage from './components/appbar/landingPage';
 import MainQuiz from './components/appbar/MainQuiz';
 import Calendar from './components/appbar/Calender';
 import Footer from './components/appbar/footer';
+import MultiplayerGaming from './components/appbar/gaming'; // Import the new component
+
 const App = () => {
   return (
     <Router>
@@ -13,6 +15,7 @@ const App = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/quiz" element={<MainQuiz />} />
         <Route path="/calendar" element={<Calendar />} />
+        <Route path="/multiplayer-gaming" element={<MultiplayerGaming />} />
       </Routes>
       {/* <Footer /> */}
     </Router>

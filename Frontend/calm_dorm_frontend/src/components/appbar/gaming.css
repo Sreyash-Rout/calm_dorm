@@ -1,0 +1,120 @@
+
+.main-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5vh;
+  flex-direction: column;
+  font-family: 'Poppins'
+}
+
+.against {
+  color: white;
+  font-size: 25px;
+  margin-top: 20px;
+  font-family: 'Poppins'
+}
+
+.water-background {
+  background-color: #4b495f;
+}
+
+.game-heading {
+  margin-top: 20px;
+  padding: 5px 20px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 40px;
+  color: white;
+  font-family: 'Poppins'
+}
+
+.square-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 10px;
+  column-gap: 10px;
+}
+
+.move-detection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+}
+
+.waiting {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  font-size: 44px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: white;
+  font-family: 'Poppins'
+}
+
+.playOnline {
+  font-weight: 700;
+  border: none;
+  background-color: #e4ca56;
+  font-size: 60px;
+  cursor: pointer;
+  margin-top: 40vh;
+  padding: 6px 10px;
+  border-radius: 5px;
+  outline: none;
+  font-family: 'Poppins'
+}
+
+.finished-state {
+  font-size: 25px;
+  text-align: center;
+  color: white;
+  margin-top: 20px;
+  font-family: 'Poppins'
+}
+
+.left,
+.right {
+  height: 30px;
+  width: 120px;
+  background-color: red;
+  border-bottom-left-radius: 50px;
+  background-color: #4b495f;
+  border-top-right-radius: 50px;
+  padding-top: 3px;
+  color: white;
+  font-size: 18px;
+  padding-bottom: 5px;
+  text-align: center;
+  font-family: 'Poppins'
+}
+
+.current-move-cross {
+  background-color: #3fa7f0 !important;
+}
+
+.current-move-circle {
+  background-color: #dd7f9f !important;
+}
+.back-to-calendar-button {
+  display: block; 
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #3fa7f0;
+  color: white;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer; 
+  transition: background-color 0.3s, border-color 0.3s; 
+}
+
+.back-to-calendar-button:hover {
+  border-color: wheat;
+}

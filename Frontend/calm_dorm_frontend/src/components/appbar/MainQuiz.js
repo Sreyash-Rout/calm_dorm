@@ -7,7 +7,7 @@ const MainQuiz = () => {
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [selectedOption, setSelectedOption] = React.useState(null);
   const [userAnswers, setUserAnswers] = React.useState({});
-  const [options, setOptions] = React.useState([]); // Define the options state variable
+  const [options, setOptions] = React.useState([]);
 
   const navigate = useNavigate();
 
@@ -16,7 +16,7 @@ const MainQuiz = () => {
   }, [currentQuestion]);
 
   const loadQuizData = () => {
-    setOptions(quizData[currentQuestion].options); // Set options based on the current question
+    setOptions(quizData[currentQuestion].options); 
   };
 
   const nextQuestionHandler = () => {
@@ -52,17 +52,29 @@ const MainQuiz = () => {
 
   const finishHandler = async () => {
     if (selectedOption) {
-      setUserAnswers(prevAnswers => ({
-        ...prevAnswers,
-        [quizData[currentQuestion].id]: selectedOption,
-      }));
+      if (quizData[currentQuestion].id === 6) {
+        if (selectedOption === "Yes, submit") {
+          setUserAnswers(prevAnswers => ({
+            ...prevAnswers,
+            [quizData[currentQuestion].id]: selectedOption,
+          }));
+
+          await PostData();
+          navigate('/calendar', { state: { userAnswers } });
+        } else if (selectedOption === "No, return to the first question") {
+          setUserAnswers({});
+          setSelectedOption(null);
+          setCurrentQuestion(0);
+        }
+      } else {
+        setUserAnswers(prevAnswers => ({
+          ...prevAnswers,
+          [quizData[currentQuestion].id]: selectedOption,
+        }));
+        setSelectedOption(null);
+        setCurrentQuestion(prevQuestion => prevQuestion + 1);
+      }
     }
-
-    await new Promise(resolve => setTimeout(resolve, 100));
-
-    await PostData();
-
-    navigate('/calendar', { state: { userAnswers } });
   };
 
   return (
