@@ -1,15 +1,27 @@
-import React from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Box, Container, Typography, Button, Grid, Paper, useMediaQuery, useTheme } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import AuthContext from '../../context/AuthContext';
 
 const LandingPage = () => {
+  const { authToken } = useContext(AuthContext);
   const navigate = useNavigate();
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Update the login state based on the authToken
+    setIsLoggedIn(!!authToken);
+  }, [authToken]);
 
   const handleGetStartedClick = () => {
-    navigate('/quiz');
+    if (isLoggedIn) {
+      navigate('/quiz');
+    } else {
+      alert('Please sign up first');
+    }
   };
 
   return (

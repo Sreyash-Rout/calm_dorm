@@ -20,7 +20,6 @@ const Navbar = () => {
   const handleLogout = () => {
     logout();
     navigate('/landing');
-    window.location.reload();
   };
 
 
