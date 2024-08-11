@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
-import { AppBar, Toolbar, Typography, Box, IconButton, Menu, MenuItem } from '@mui/material';
+import React, { useState, useContext } from 'react';
+import { AppBar, Toolbar, Typography, Box, IconButton, Menu, MenuItem, Button } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import AuthContext from '../../context/AuthContext';
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
+  const { user, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -14,9 +17,15 @@ const Navbar = () => {
     setAnchorElNav(null);
   };
 
+  const handleLogout = () => {
+    logout();
+    navigate('/landing');
+    window.location.reload();
+  };
+
+
   return (
     <div>
-      {/* Navbar */}
       <AppBar position="static" sx={{ backgroundColor: 'black' }}>
         <Toolbar>
           <Typography
@@ -45,7 +54,41 @@ const Navbar = () => {
               alignItems: 'center'
             }}
           >
-            {/* Removed the search TextField and IconButton */}
+            {user ? (
+              <>
+                <Typography sx={{ color: 'yellow', marginRight: '1rem', fontFamily: 'Poppins' }}>
+                  Hello, {user.username}!
+                </Typography>
+                <Button
+                  sx={{
+                    color: 'yellow',
+                    fontFamily: 'Poppins',
+                    ':hover': {
+                      color: 'white',
+                    }
+                  }}
+                  onClick={handleLogout}
+                >
+                  Sign Out
+                </Button>
+
+              </>
+            ) : (
+              <Button
+                color="inherit"
+                component={Link}
+                to="/"
+                sx={{
+                  color: 'yellow',
+                  fontFamily: 'Poppins',
+                  ':hover': {
+                    color: 'white',
+                  }
+                }}
+              >
+                Login / Signup
+              </Button>
+            )}
           </Box>
           <IconButton
             size="large"

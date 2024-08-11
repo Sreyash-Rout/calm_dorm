@@ -1,5 +1,6 @@
 /* src/components/appbar/Auth.css */
 .auth-container {
+  font-family: 'Poppins';
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,6 +27,7 @@
   }
   
   button {
+    font-family: 'Poppins';
     padding: 10px 20px;
     border: none;
     border-radius: 5px;

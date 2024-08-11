@@ -8,7 +8,7 @@ const Auth = () => {
   const [isSignup, setIsSignup] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null); // Add error state
+  const [error, setError] = useState(null);
   const { signup, login } = useContext(AuthContext);
   const navigate = useNavigate();
 
