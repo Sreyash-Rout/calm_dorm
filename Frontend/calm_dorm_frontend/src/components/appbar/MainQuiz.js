@@ -2,6 +2,7 @@ import React from "react";
 import { quizData } from "./quizData";
 import './quiz.css';
 import { useNavigate } from 'react-router-dom';
+import CalmBot from './CalmBot';
 
 const MainQuiz = () => {
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
@@ -16,7 +17,7 @@ const MainQuiz = () => {
   }, [currentQuestion]);
 
   const loadQuizData = () => {
-    setOptions(quizData[currentQuestion].options); 
+    setOptions(quizData[currentQuestion].options);
   };
 
   const nextQuestionHandler = () => {
@@ -78,7 +79,7 @@ const MainQuiz = () => {
   };
 
   return (
-    <div className="App">
+    <div className="app">
       <div className="quiz-container">
         <h1>{quizData[currentQuestion].question}</h1>
         <span>{`Question ${currentQuestion + 1} out of ${quizData.length}`}</span>
@@ -106,6 +107,7 @@ const MainQuiz = () => {
           </button>
         )}
       </div>
+      <CalmBot />
     </div>
   );
 };

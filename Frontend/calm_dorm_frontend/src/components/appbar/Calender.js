@@ -4,7 +4,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import { Box, Typography, Paper } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import './Calendar.css';
-
+import CalmBot from './CalmBot';
 const ItemTypes = {
   TASK: 'task',
 };
@@ -67,7 +67,7 @@ const TimeSlot = ({ day, time, tasks = [], moveTask }) => {
   return (
     <Box
       ref={drop}
-      className={`time-slot ${isOver ? 'over' : ''}`}
+      className={`time-slot ${isOver ? 'over' : ''}`} // Corrected class name syntax
     >
       {tasks.map((task) => (
         <Task key={task.id} task={task} handleClick={() => handleTaskClick(task)} />
@@ -97,6 +97,7 @@ const Calendar = () => {
         const preferences = data.preferences;
         const newAssignments = { ...taskAssignments };
 
+        // Check preferences and assign tasks
         if (preferences.novelDiscussion) {
           assignTaskToDays(newAssignments, 'Novel/Stories Discussion', 3); 
         }
@@ -123,7 +124,7 @@ const Calendar = () => {
     };
 
     fetchPreferences();
-  }, []);
+  }, []); // No dependencies means this runs once when the component mounts
 
   const assignTaskToDays = (assignments, taskName, daysCount) => {
     const task = tasks.find(t => t.name === taskName);
@@ -135,7 +136,7 @@ const Calendar = () => {
       let slot;
       do {
         slot = availableSlots.splice(Math.floor(Math.random() * availableSlots.length), 1)[0];
-      } while (assignments[slot.day][slot.time].length > 0);
+      } while (assignments[slot.day][slot.time].length > 0); // Ensure the slot is empty
 
       assignments[slot.day][slot.time].push({ ...task, id: taskIdCounter++ });
     }
@@ -163,7 +164,7 @@ const Calendar = () => {
       }
 
       // Clear the slot and add the new task
-      newAssignments[day][time] = [newTask];
+      newAssignments[day][time] = [newTask]; // Add the new task
       return newAssignments;
     });
   };
@@ -210,7 +211,9 @@ const Calendar = () => {
           </Box>
         </Box>
       </Box>
+      <CalmBot />
     </DndProvider>
+    
   );
 };
 
