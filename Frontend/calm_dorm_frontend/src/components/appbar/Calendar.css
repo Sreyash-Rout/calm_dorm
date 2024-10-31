@@ -100,11 +100,12 @@
 }
 
 .tasks-column {
-  width: 150px;
+  width: 110px;
   padding-left: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: 15px;
 }
 
 .task {

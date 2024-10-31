@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
+    "@google/generative-ai": "^0.21.0",
     "@mui/icons-material": "^5.16.4",
     "@mui/material": "^5.16.4",
     "@testing-library/jest-dom": "^5.17.0",
@@ -15,6 +16,7 @@
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.3.1",
+    "react-markdown": "^9.0.1",
     "react-router-dom": "^6.26.0",
     "react-scripts": "5.0.1",
     "socket.io-client": "^4.7.5",

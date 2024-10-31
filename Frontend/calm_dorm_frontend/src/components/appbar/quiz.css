@@ -1,23 +1,15 @@
-.App {
+.app {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-  background: radial-gradient(circle at center, rgba(113, 135, 215, 0.648), rgba(120, 102, 255, 0), rgba(160, 164, 241, 0.758));
-  background-size: cover;
-  animation: moveBackground 30s linear infinite;
-  text-align: center;
-  padding: 20px;
-  overflow: hidden;
+  justify-content: center; /* Center horizontally */
+  align-items: center;    /* Center vertically */
+  height: 100vh;         /* Full viewport height */
 }
-
 .quiz-container {
   max-width: 500px;
   width: 100%;
-  padding: 20px;
   justify-content: center;
+  padding: 20px;
+  align-items: center;
   background-color: #363636;
   color: white;
   border-radius: 8px;

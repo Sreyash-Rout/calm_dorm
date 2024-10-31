@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Box, Container, Typography, Button, Grid, Paper, useMediaQuery, useTheme } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import AuthContext from '../../context/AuthContext';
-
+import CalmBot from './CalmBot';
 const LandingPage = () => {
   const { authToken } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -173,6 +173,7 @@ const LandingPage = () => {
           </Grid>
         </Grid>
       </Container>
+      <CalmBot />
     </Box>
   );
 };

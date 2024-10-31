@@ -5,7 +5,7 @@ import LandingPage from './components/appbar/landingPage';
 import MainQuiz from './components/appbar/MainQuiz';
 import Calendar from './components/appbar/Calender';
 import Footer from './components/appbar/footer';
-import MultiplayerGaming from './components/appbar/gaming'; // Import the new component
+import MultiplayerGaming from './components/appbar/gaming';
 import Auth from './components/appbar/Auth';
 import { AuthProvider } from './context/AuthContext';
 import './App.css';

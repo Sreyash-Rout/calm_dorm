@@ -1,0 +1,82 @@
+.container {
+    position: relative; /* Position relative for absolute positioning of chat icon */
+  }
+  
+  .chat-icon {
+    position: fixed; /* Fix the icon to the corner */
+    bottom: 20px; /* Position from the bottom */
+    right: 20px; /* Position from the right */
+    background-color: #007bff; /* Chat icon color */
+    color: white;
+    border-radius: 50%; /* Round shape */
+    padding: 15px; /* Padding for icon */
+    cursor: pointer; /* Change cursor to pointer */
+    font-size: 24px; /* Size of the icon */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Shadow for icon */
+  }
+  
+  .chat-window {
+    position: fixed; /* Fix the chat window */
+    bottom: 80px; /* Position above the icon */
+    right: 20px; /* Align with the icon */
+    width: 300px; /* Set width of the chat window */
+    max-height: 400px; /* Set maximum height */
+    overflow-y: auto; /* Scroll if content exceeds max height */
+    background-color: white; /* Background color */
+    border: 1px solid #ccc; /* Border for the chat window */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Shadow for the window */
+    z-index: 1000; /* Ensure it's on top */
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Vertical stacking of children */
+  }
+  
+  .title {
+    background-color: black; /* Header color */
+    color: yellow; /* Text color */
+    padding: 10px; /* Padding for header */
+    border-top-left-radius: 5px; /* Rounded corners */
+    border-top-right-radius: 5px; /* Rounded corners */
+    text-align: center;
+    margin: 0; /* Reset margin */
+    font-family: "Poppins";
+  }
+  
+  .chat-container {
+    flex: 1; /* Take available space */
+    padding: 10px; /* Padding inside chat area */
+    overflow-y: auto; /* Scroll if content exceeds */
+  }
+  
+  .input-container {
+    display: flex; /* Flex layout */
+    padding: 10px; /* Padding for input area */
+  }
+  
+  .input-box {
+    flex-grow: 1; /* Take available space */
+    padding: 10px; /* Padding for input box */
+    border: 1px solid #ccc; /* Border for input */
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  .send-button {
+    background-color: black; /* Button color */
+    color: rgb(157, 157, 237); /* Button text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Padding for button */
+    cursor: pointer; /* Pointer cursor */
+    margin-left: 10px; /* Space between input and button */
+  }
+  
+  .clear-button {
+    margin-top: 10px; /* Space above clear button */
+    background-color: black; /* Clear button color */
+    color: rgb(157, 157, 237); /* Text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Padding for button */
+    cursor: pointer; /* Pointer cursor */
+  }
+  
