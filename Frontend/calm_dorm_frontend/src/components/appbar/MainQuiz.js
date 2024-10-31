@@ -223,6 +223,7 @@ const MainQuiz = () => {
         )}
         <CalmBot />
       </div>
+      <CalmBot />
     </div>
   );
 };
